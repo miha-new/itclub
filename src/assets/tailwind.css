@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  #app, html, body {
+    @apply h-full;
+    @apply bg-white;
+    @apply text-gray-700;
+    overflow: hidden;
+  }
+  button {
+    @apply focus:outline-none;
+  }
+}
