@@ -101,3 +101,48 @@
     },
   }
 </script>
+
+<style>
+  .slide-rl-leave-active,
+  .slide-rl-enter-active {
+    @apply absolute top-0 left-0 w-full h-full transition-transform duration-700 ease-in-out;
+  }
+  .slide-rl-enter-active {
+    @apply transform -translate-x-full;
+  }
+  .slide-rl-leave-active {
+    @apply transform translate-x-0;
+  }
+  .slide-rl-enter-to {
+    @apply transform translate-x-0;
+  }
+  .slide-rl-leave-to {
+    @apply transform -translate-x-full;
+  }
+
+  .slide-lr-leave-active,
+  .slide-lr-enter-active {
+    @apply absolute top-0 left-0 w-full h-full transition-transform duration-700 ease-in-out;
+  }
+  .slide-lr-enter-active {
+    @apply transform translate-x-full;
+  }
+  .slide-lr-leave-active {
+    @apply transform translate-x-0;
+  }
+  .slide-lr-enter-to {
+    @apply transform translate-x-0;
+  }
+  .slide-lr-leave-to {
+    @apply transform translate-x-full;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    @apply absolute top-0 left-0 w-full h-full transition-opacity duration-700 ease-in-out;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    @apply opacity-0
+  }
+</style>

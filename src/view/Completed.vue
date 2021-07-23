@@ -10,9 +10,9 @@
       </div>
     </div>
     <div class="mt-auto mb-2">
-      <v-btn variant="primary" class="w-full" @click="updateView('Payment')">
+      <button class="btn btn-primary w-full" @click="updateView('Payment')">
         Make another one
-      </v-btn>
+      </button>
     </div>
   </v-view>
 </template>

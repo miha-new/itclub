@@ -4,26 +4,25 @@
       <div class="mb-4 text-center font-medium text-base">Make a payment</div>
       <div class="mb-4">
         <div class="inline-block mb-2">Select contact</div>
-        <v-btn variant="select" class="w-full" @click="updateView('SelectContact')">
+        <button class="btn btn-select w-full" @click="updateView('SelectContact')">
           {{ contact }}
-        </v-btn>
+        </button>
       </div>
       <div class="mb-4">
         <div class="inline-block mb-2">Select payment method</div>
-        <v-btn variant="select" class="w-full" @click="updateView('SelectMethod')">
+        <button class="btn btn-select w-full" @click="updateView('SelectMethod')">
           {{ method }}
-        </v-btn>
+        </button>
       </div>
       <div class="mb-4">
         <div class="inline-block mb-2">Enter amount</div>
-        <pre>{{amount}}</pre>
         <input type="number" class="form-control" name="enterAmount" v-model="amount"/>
       </div>
     </div>
     <div class="mt-auto mb-2">
-      <v-btn variant="success" class="w-full" @click="makePayment">
+      <button class="btn btn-success w-full" @click="makePayment">
         Pay
-      </v-btn>
+      </button>
     </div>
   </v-view>
 </template>

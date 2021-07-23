@@ -1,7 +1,10 @@
 <template>
   <v-view class="px-6 pb-6">
     <v-header text="New Contact" class="header">
-      <v-btn variant="back" class="absolute top-1/2 left-6 transform -translate-y-1/2" @click="updateView('SelectContact')"/>
+      <button
+        class="btn btn-back absolute top-1/2 left-6 transform -translate-y-1/2"
+        @click="updateView('SelectContact')"
+      />
     </v-header>
     <div class="mb-4">
       <div class="mb-4">
@@ -18,9 +21,9 @@
       </div>
     </div>
     <div class="mt-auto mb-2">
-      <v-btn variant="success" class="w-full" @click="addNewContact">
+      <button class="btn btn-success w-full" @click="addNewContact">
         Save
-      </v-btn>
+      </button>
     </div>
   </v-view>
 </template>
