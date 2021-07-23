@@ -1,5 +1,4 @@
 import { h } from 'vue'
-import './style.css';
 
 const Button = (props, context) => {
   const propsClasses = [];
@@ -10,14 +9,14 @@ const Button = (props, context) => {
 
   let strPropsClasses = propsClasses.join(' ');
 
-  return h('button', { ...context.attrs, class: strPropsClasses }, context.slots)
+  return h('button', { ...context.attrs, class: strPropsClasses }, context.slots);
 }
 
 Button.props = {
   variant: {
     type: [String],
-    required: true
+    required: true,
   },
-}
+};
 
 export default Button;

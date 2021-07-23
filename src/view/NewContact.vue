@@ -1,20 +1,19 @@
 <template>
-  <div class="view">
-    <div class="header">
-      <v-btn variant="back" @click="updateView('SelectContact')"/>
-      <div class="title">New Contact</div>
-    </div>
+  <v-view class="px-6 pb-6">
+    <v-header text="New Contact" class="header">
+      <v-btn variant="back" class="absolute top-1/2 left-6 transform -translate-y-1/2" @click="updateView('SelectContact')"/>
+    </v-header>
     <div class="mb-4">
       <div class="mb-4">
-        <div class="form-label">First Name</div>
+        <div class="inline-block mb-2">First Name</div>
         <input type="text" class="form-control" name="firstName" v-model="fields.firstName"/>
       </div>
       <div class="mb-4">
-        <div class="form-label">Last name</div>
+        <div class="inline-block mb-2">Last name</div>
         <input type="text" class="form-control" name="lastName" v-model="fields.lastName"/>
       </div>
       <div class="mb-4">
-        <div class="form-label">Email</div>
+        <div class="inline-block mb-2">Email</div>
         <input type="text" class="form-control" name="email" v-model="fields.email"/>
       </div>
     </div>
@@ -23,7 +22,7 @@
         Save
       </v-btn>
     </div>
-  </div>
+  </v-view>
 </template>
 
 <script>
@@ -56,9 +55,3 @@
     },
   }
 </script>
-
-<style scoped>
-  .view {
-    @apply pt-0;
-  }
-</style>

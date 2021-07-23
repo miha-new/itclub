@@ -1,45 +1,48 @@
 <template>
-  <div class="view">
-    <div class="header">
-      <v-btn variant="back" @click="updateView('Payment')"/>
-      <div class="title">Select method</div>
-      <v-btn variant="add" @click="updateView('NewCard')"/>
-    </div>
+  <v-view class="px-6 pb-6">
+    <v-header text="Select method" class="header">
+      <v-btn variant="back" class="absolute top-1/2 left-6 transform -translate-y-1/2" @click="updateView('Payment')"/>
+      <v-btn variant="add" class="absolute top-1/2 right-6 transform -translate-y-1/2" @click="updateView('NewCard')"/>
+    </v-header>
     <div class="mb-4" v-if="cardOptions.length">
-      <div class="title">Credit/debit cards</div>
+      <div class="mb-4 text-left font-medium text-base">Credit/debit cards</div>
       <div class="mb-4">
-        <div v-for="card in cardOptions" class="card" @click="selectMethod(card)">
-          <div class="figure"></div>
-          <div class="fullname">{{ card.fullName }}</div>
-          <div class="flex">
-            <div class="card-number">{{ card.cardNumber }}</div>
-            <div class="expiry-date">{{ card.expiryDate }}</div>
-          </div>
-          <v-btn variant="more"/>
-        </div>
+        <item-card
+          v-for="card in cardOptions"
+          :name="card.fullName"
+          :number="card.cardNumber"
+          :code="card.expiryDate"
+          @click="selectMethod(bank)"
+        >
+          <v-btn variant="more" class="absolute top-1 right-0" @click.prevent/>
+        </item-card>
       </div>
     </div>
     <div class="mb-4" v-if="bankOptions.length">
-      <div class="title">Bank accounts</div>
+      <div class="mb-4 text-left font-medium text-base">Bank accounts</div>
       <div class="mb-4">
-        <div v-for="bank in bankOptions" class="card" @click="selectMethod(bank)">
-          <div class="figure"></div>
-          <div class="fullname">{{ bank.accountName }}</div>
-          <div class="flex">
-            <div class="card-number">{{ bank.accountNumber }}</div>
-            <div class="expiry-date">{{ bank.bsb }}</div>
-          </div>
-          <v-btn variant="more" @click.prevent/>
-        </div>
+        <item-card
+          v-for="bank in bankOptions"
+          :name="bank.accountName"
+          :number="bank.accountNumber"
+          :code="bank.bsb"
+          @click="selectMethod(bank)"
+        >
+          <v-btn variant="more" class="absolute top-1 right-0" @click.prevent/>
+        </item-card>
       </div>
     </div>
-  </div>
+  </v-view>
 </template>
 
 <script>
   import { inject } from 'vue';
+  import ItemCard from '../components/ItemCard';
 
   export default {
+    components: {
+      ItemCard,
+    },
     setup() {
       const updateView = inject('updateView');
       const cardOptions = inject('cardOptions');
@@ -56,24 +59,3 @@
     },
   }
 </script>
-
-<style scoped>
-  .view {
-    @apply pt-0;
-  }
-  .card {
-    @apply relative block w-full px-3 py-1 mb-4 bg-gray-100 border border-gray-200 select-none cursor-pointer;
-  }
-  .card .figure {
-    @apply mb-2 w-8 h-6 bg-green-400;
-  }
-  .card .fullname {
-    @apply font-normal text-base;
-  }
-  .card .expiry-date {
-    @apply ml-auto font-normal text-base text-gray-400;
-  }
-  .card .btn-more {
-    @apply absolute top-1 right-0;
-  }
-</style>

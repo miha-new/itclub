@@ -1,25 +1,28 @@
 <template>
-  <div class="view">
-    <div class="header">
-      <v-btn variant="back" @click="updateView('Payment')"/>
-      <div class="title">Select contact</div>
-      <v-btn variant="add" @click="updateView('NewContact')"/>
-    </div>
+  <v-view class="px-6 pb-6">
+    <v-header text="Select contact" class="header">
+      <v-btn variant="back" class="absolute top-1/2 left-6 transform -translate-y-1/2" @click="updateView('Payment')"/>
+      <v-btn variant="add" class="absolute top-1/2 right-6 transform -translate-y-1/2" @click="updateView('NewContact')"/>
+    </v-header>
     <div class="mb-4">
-      <div v-for="contact in contactOptions" class="contact" @click="selectContact(contact)">
-        <div class="fullname">
-          {{ contact.firstName }} {{ contact.lastName }}
-        </div>
-        <div class="email">{{ contact.email }}</div>
-      </div>
+      <item-contact
+        v-for="contact in contactOptions"
+        :fullName="`${contact.firstName} ${contact.lastName}`"
+        :email="contact.email"
+        @click="selectContact(contact)"
+      />
     </div>
-  </div>
+  </v-view>
 </template>
 
 <script>
   import { inject } from 'vue';
+  import ItemContact from '../components/ItemContact';
 
   export default {
+    components: {
+      ItemContact,
+    },
     setup() {
       const contactOptions = inject('contactOptions');
       const updateView = inject('updateView');
@@ -34,18 +37,3 @@
     },
   }
 </script>
-
-<style scoped>
-  .view {
-    @apply pt-0;
-  }
-  .contact {
-    @apply block w-full px-3 py-1 mb-4 bg-gray-100 border border-gray-200 select-none cursor-pointer;
-  }
-  .contact .fullname {
-    @apply font-normal text-base;
-  }
-  .contact .email {
-    @apply font-normal text-base text-gray-400;
-  }
-</style>

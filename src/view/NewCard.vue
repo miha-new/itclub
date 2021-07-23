@@ -1,9 +1,8 @@
 <template>
-  <div class="view">
-    <div class="header">
-      <v-btn variant="back" @click="updateView('SelectMethod')"/>
-      <div class="title">New card</div>
-    </div>
+  <v-view class="px-6 pb-6">
+    <v-header text="New Card" class="header">
+      <v-btn variant="back" class="absolute top-1/2 left-6 transform -translate-y-1/2" @click="updateView('SelectMethod')"/>
+    </v-header>
     <div class="flex mb-4">
       <v-btn
         v-for="(option, index) in tabs.options"
@@ -17,29 +16,29 @@
     </div>
     <div class="mb-4" v-if="isActiveTab(0)">
       <div class="mb-4">
-        <div class="form-label">Full Name</div>
+        <div class="inline-block mb-2">Full Name</div>
         <input type="text" class="form-control" name="fullName" v-model="cardFields.fullName"/>
       </div>
       <div class="mb-4">
-        <div class="form-label">Card number</div>
+        <div class="inline-block mb-2">Card number</div>
         <input type="text" class="form-control" name="cardNumber" v-model="cardFields.cardNumber"/>
       </div>
       <div class="mb-4">
-        <div class="form-label">Expiry date</div>
+        <div class="inline-block mb-2">Expiry date</div>
         <input type="text" class="form-control" name="expiryDate" v-model="cardFields.expiryDate"/>
       </div>
     </div>
     <div class="mb-4" v-else-if="isActiveTab(1)">
       <div class="mb-4">
-        <div class="form-label">Account name</div>
+        <div class="inline-block mb-2">Account name</div>
         <input type="text" class="form-control" name="accountName" v-model="bankFields.accountName"/>
       </div>
       <div class="mb-4">
-        <div class="form-label">Account number</div>
+        <div class="inline-block mb-2">Account number</div>
         <input type="text" class="form-control" name="accountNumber" v-model="bankFields.accountNumber"/>
       </div>
       <div class="mb-4">
-        <div class="form-label">BSB</div>
+        <div class="inline-block mb-2">BSB</div>
         <input type="text" class="form-control" name="bsb" v-model="bankFields.bsb"/>
       </div>
     </div>
@@ -48,7 +47,7 @@
         Save
       </v-btn>
     </div>
-  </div>
+  </v-view>
 </template>
 
 <script>
@@ -107,9 +106,3 @@
     },
   }
 </script>
-
-<style scoped>
-  .view {
-    @apply pt-0;
-  }
-</style>

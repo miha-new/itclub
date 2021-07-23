@@ -1,21 +1,22 @@
 <template>
-  <div class="view">
+  <v-view class="p-6">
     <div class="mb-4">
-      <div class="title">Make a payment</div>
+      <div class="mb-4 text-center font-medium text-base">Make a payment</div>
       <div class="mb-4">
-        <div class="form-label">Select contact</div>
+        <div class="inline-block mb-2">Select contact</div>
         <v-btn variant="select" class="w-full" @click="updateView('SelectContact')">
           {{ contact }}
         </v-btn>
       </div>
       <div class="mb-4">
-        <div class="form-label">Select payment method</div>
+        <div class="inline-block mb-2">Select payment method</div>
         <v-btn variant="select" class="w-full" @click="updateView('SelectMethod')">
           {{ method }}
         </v-btn>
       </div>
       <div class="mb-4">
-        <div class="form-label">Enter amount</div>
+        <div class="inline-block mb-2">Enter amount</div>
+        <pre>{{amount}}</pre>
         <input type="number" class="form-control" name="enterAmount" v-model="amount"/>
       </div>
     </div>
@@ -24,7 +25,7 @@
         Pay
       </v-btn>
     </div>
-  </div>
+  </v-view>
 </template>
 
 <script>
@@ -87,9 +88,3 @@
     },
   }
 </script>
-
-<style scoped>
-  .title {
-    @apply mb-4 text-center font-medium text-base;
-  }
-</style>
